@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class SpeakerScale : MonoBehaviour
 {
+    Vector3 StartScale;
     float scale;
+
+    void Start()
+    {
+        StartScale = transform.localScale;
+    }
 
     void Update()
     {
-        scale = 0.5f + Mathf.PingPong(1 * Time.time, .5f/*speed*/) * 0.25f/*scale pingpong*/;
-        transform.localScale = new Vector3(scale, scale, 1);
-        
+        scale = 1 + Mathf.PingPong(1 * Time.time, .5f/*speed*/) * 0.5f/*scale pingpong*/;
+        transform.localScale = StartScale*scale;
     }
 }
