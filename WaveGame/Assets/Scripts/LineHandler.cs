@@ -5,9 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LineHandler : MonoBehaviour
 {
-    const int SIZE = 10;
-    const float RATIO = 5f / SIZE;
-    public Vector3[] positions = new Vector3[SIZE];
+    public Transform FollowObject;
+
+    const float LineWidth = 0.1f;
+    public float LineLength = 7f;
+    public int LinePoints = 50;
+    float Ratio;
+    public Vector3[] positions;
     //public Queue<Vector3> positions = new Queue<Vector3>(SIZE);
 
     public float speed = 0.01f;
@@ -20,31 +24,39 @@ public class LineHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (!FollowObject)
+            FollowObject = transform;
+        Ratio = LineLength / LinePoints;
+        positions = new Vector3[LinePoints];
+
         lr = GetComponent<LineRenderer>();
+        lr.useWorldSpace = false;
+        lr.widthMultiplier = LineWidth;
 
         SetPositions();
         tim = Time.time;
+
     }
 
     void MovePositions()
     {
-        for (i = SIZE-1; i > 0; i--)
+        for (i = LinePoints-1; i > 0; i--)
         {
-            positions[i] = new Vector3(i * RATIO,positions[i-1].y);
+            positions[i] = new Vector3(i * Ratio,positions[i-1].y);
         }
-        positions[0] = new Vector3(0, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        positions[0] = new Vector3(0, FollowObject.position.y);
         lr.SetPositions(positions);
     }
 
     void SetPositions()
     {
-        positions = new Vector3[SIZE];
-        for (i = 0; i < SIZE; i++)
+        positions = new Vector3[LinePoints];
+        for (i = 0; i < LinePoints; i++)
         {
-            positions[i] = new Vector3(i * RATIO, 0);
+            positions[i] = new Vector3(i * Ratio, 0);
         }
 
-        lr.numPositions = SIZE;
+        lr.numPositions = LinePoints;
         lr.SetPositions(positions);
     }
 
@@ -56,6 +68,6 @@ public class LineHandler : MonoBehaviour
             tim += speed;
             MovePositions();
         }
-        transform.position = new Vector3((Time.time - tim), 0, 0);
+        transform.position = new Vector3((Time.time - tim)*Ratio/speed, 0, 0);
     }
 }
