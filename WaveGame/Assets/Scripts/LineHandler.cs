@@ -8,12 +8,14 @@ using UnityEditor;
 [RequireComponent(typeof(LineRenderer))]
 public class LineHandler : MonoBehaviour
 {
+    public static LineHandler Instance;
+
     public Transform FollowObject;
 
-    const float LineWidth = 0.1f;
+    public float LineWidth = 0.1f;
     public float LineLength = 7f;
     public int LinePoints = 50;
-    float Ratio;
+    public float Ratio;
     public Vector3[] positions;
     //public Queue<Vector3> positions = new Queue<Vector3>(SIZE);
 
@@ -24,6 +26,11 @@ public class LineHandler : MonoBehaviour
     int i = 0;
 
     float tim = 0;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     // Use this for initialization
     void Start()
@@ -82,8 +89,14 @@ public class LineHandler : MonoBehaviour
         SmoothEnds();
     }
 
+    public int XIndex(Transform t2)
+    {
+        return Mathf.FloorToInt(transform.InverseTransformPoint(t2.position).x / Ratio);
+    }
+
     void SetUp()
     {
+        Instance = this;
         if (!FollowObject)
             FollowObject = transform;
         LinePoints = Mathf.Max(LinePoints, 1);
