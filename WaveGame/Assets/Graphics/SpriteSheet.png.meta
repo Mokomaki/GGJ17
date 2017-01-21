@@ -1,12 +1,15 @@
 fileFormatVersion: 2
-guid: 06c4d30f4702d5a4f8af96f8e31a704e
-timeCreated: 1484950672
+guid: 0528bd7d1a772314e8ac112d9ab73a4e
+timeCreated: 1485022131
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Pointer_Frame
-    21300002: Pointer_Pointer
-    21300004: Pointer_0
+    21300000: SpriteSheet_0
+    21300002: SpriteSheet_1
+    21300004: SpriteSheet_2
+    21300006: SpriteSheet_3
+    21300008: SpriteSheet_4
+    21300010: SpriteSheet_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -30,7 +33,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -97,41 +100,80 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pointer_Frame
+      name: SpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 50
-        width: 218
-        height: 940
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Pointer_Pointer
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 232
-        width: 178
-        height: 192
+        x: 376
+        y: 1526
+        width: 531
+        height: 504
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pointer_0
+      name: SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 523
-        y: 474
-        width: 434
-        height: 534
+        x: 926
+        y: 1525
+        width: 531
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 1524
+        width: 531
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 891
+        width: 384
+        height: 504
       alignment: 9
-      pivot: {x: 0.49211928, y: 0.23313259}
+      pivot: {x: 0.5237212, y: 0.104030915}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 660
+        width: 113
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 451
+        width: 188
+        height: 918
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
