@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [RequireComponent(typeof(LineRenderer))]
 public class LineHandler : MonoBehaviour
@@ -14,7 +17,8 @@ public class LineHandler : MonoBehaviour
     public Vector3[] positions;
     //public Queue<Vector3> positions = new Queue<Vector3>(SIZE);
 
-    public float speed = 0.01f;
+    public float Lifetime = 2.0f;
+    float Frequency = 0.01f;
 
     LineRenderer lr;
     int i = 0;
@@ -24,27 +28,24 @@ public class LineHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (!FollowObject)
-            FollowObject = transform;
-        Ratio = LineLength / LinePoints;
-        positions = new Vector3[LinePoints];
-
-        lr = GetComponent<LineRenderer>();
-        lr.useWorldSpace = false;
-        lr.widthMultiplier = LineWidth;
-
-        SetPositions();
-        tim = Time.time;
-
+        SetUp();
     }
 
     void MovePositions()
     {
-        for (i = LinePoints-1; i > 0; i--)
+        var z = transform.localPosition.z;
+
+        //set last point to keep right length
+        positions[LinePoints-1] = new Vector3(LineLength - transform.localPosition.x, positions[LinePoints - 2].y, z);
+        for (i = LinePoints-3; i > 0; i--)
         {
-            positions[i] = new Vector3(i * Ratio,positions[i-1].y);
+            positions[i+1] = new Vector3(i * Ratio,positions[i].y, z);
         }
-        positions[0] = new Vector3(0, FollowObject.position.y);
+        //set first point to start x
+        positions[1] = new Vector3(0, transform.InverseTransformPoint(FollowObject.position).y, transform.localPosition.z);
+
+
+        SmoothEnds();
         lr.SetPositions(positions);
     }
 
@@ -60,14 +61,47 @@ public class LineHandler : MonoBehaviour
         lr.SetPositions(positions);
     }
 
+    void SmoothEnds()
+    {
+        positions[0] = new Vector3(-transform.localPosition.x, transform.InverseTransformPoint(FollowObject.position).y, transform.localPosition.z);
+        lr.SetPosition(0, positions[0]);
+
+        positions[LinePoints - 1] = new Vector3(LineLength - transform.localPosition.x, positions[LinePoints - 1].y, transform.localPosition.z);
+        lr.SetPosition(LinePoints - 1, positions[LinePoints - 1]);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        while (Time.time - tim > speed)
+        while (Time.time - tim > Frequency && Frequency > 0.0001f)
         {
-            tim += speed;
+            tim += Frequency;
             MovePositions();
         }
-        transform.position = new Vector3((Time.time - tim)*Ratio/speed, 0, 0);
+        transform.localPosition = new Vector3((Time.time - tim)*Ratio/Frequency, transform.localPosition.y, transform.localPosition.z);
+        SmoothEnds();
     }
+
+    void SetUp()
+    {
+        if (!FollowObject)
+            FollowObject = transform;
+        LinePoints = Mathf.Max(LinePoints, 1);
+        Ratio = LineLength / LinePoints;
+
+        lr = GetComponent<LineRenderer>();
+        lr.useWorldSpace = false;
+        lr.widthMultiplier = LineWidth;
+
+        SetPositions();
+        tim = Time.time;
+        Frequency = Lifetime / LinePoints;
+    }
+
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        SetUp();
+    }
+#endif
 }

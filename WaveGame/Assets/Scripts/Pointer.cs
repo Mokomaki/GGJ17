@@ -31,12 +31,13 @@ public class Pointer : MonoBehaviour
             TargetPos -= Sensitivity;
         }
         TargetPos = Mathf.Clamp(TargetPos, MinPos, MaxPos);
+        //transform.position = new Vector3(transform.position.x, TargetPos, transform.position.z);
     }
 
     void FixedUpdate()
     {
-        CurPos = CurPos + (TargetPos - CurPos) * 0.1f;
-        transform.position = new Vector3(transform.position.x, CurPos, 1);
+        CurPos = CurPos + (TargetPos - CurPos) * 0.3f;
+        transform.position = new Vector3(transform.position.x, CurPos, transform.position.z);
     }
 
 }
