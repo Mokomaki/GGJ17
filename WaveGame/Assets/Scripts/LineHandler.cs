@@ -35,6 +35,7 @@ public class LineHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Instance = this;
         SetUp();
     }
 

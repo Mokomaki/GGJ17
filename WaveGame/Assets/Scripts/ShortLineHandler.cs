@@ -49,8 +49,11 @@ public class ShortLineHandler : MonoBehaviour
         LinePoints = Mathf.Max(LinePoints, 1);
 
         lr = GetComponent<LineRenderer>();
+
+        lr.numCornerVertices = 1;
+        lr.numCapVertices = 3;
         lr.useWorldSpace = false;
-        lr.widthMultiplier = LineHandler.Instance.LineWidth;
+        lr.widthMultiplier = Accuracy;//LineHandler.Instance.LineWidth;
 
         SetPositions();
     }
@@ -70,13 +73,16 @@ public class ShortLineHandler : MonoBehaviour
     
     void Update()
     {
-        transform.localPosition = transform.localPosition + Vector3.left * Time.deltaTime;
+        transform.localPosition = transform.localPosition + Vector3.left * Speed * Time.deltaTime;
         CheckWave();
     }
 
     void CheckWave()
     {
         index = lh.XIndex(transform);
+
+        if (index + LinePoints > lh.LinePoints)
+            return;
 
         if (index < 0)
         {
@@ -85,13 +91,11 @@ public class ShortLineHandler : MonoBehaviour
         }
 
         error = 0;
-
-        if (index + LinePoints < lh.LinePoints)
+        float height = lh.transform.InverseTransformPoint(transform.position).y;
+        
+        for (i = 0; i < LinePoints; i++)
         {
-            for (i = 0; i < LinePoints; i++)
-            {
-                error += Mathf.Abs(positions[i].y - lh.positions[index + i].y);
-            }
+            error += Mathf.Abs(positions[i].y+height - lh.positions[index + i].y);
         }
 
         if (error/LinePoints < Accuracy)
@@ -119,10 +123,10 @@ public class ShortLineHandler : MonoBehaviour
                             Mathf.Lerp(0, f.FunctionSize, (f.EndPoint - pos) / (f.EndPoint - f.StartPoint - f.FunctionInput));
                         break;
                     case 2: // sin with input as x multiplier
-                        retVal += Mathf.Sin(pos * f.FunctionInput) * f.FunctionSize;
+                        retVal += Mathf.Sin((pos-f.StartPoint) * f.FunctionInput) * f.FunctionSize;
                         break;
                     case 3: // half sin with input as x multiplier
-                        retVal += Mathf.Clamp(Mathf.Sin(pos * f.FunctionInput), 0, float.MaxValue) * f.FunctionSize;
+                        retVal += Mathf.Clamp(Mathf.Sin((pos - f.StartPoint) * f.FunctionInput), 0, float.MaxValue) * f.FunctionSize;
                         break;
                     default:
                         break;
@@ -141,15 +145,21 @@ public class ShortLineHandler : MonoBehaviour
         }
     }
 
-    public void WriteDebug()
+    public void Die()
     {
-        Debug.Log("ShortLineHandler WriteDebug()");
+        Destroy(gameObject);
+    }
+
+    public void Reach()
+    {
+        Heart.Instance.TakesDmG();
+        Destroy(gameObject);
     }
 
 #if UNITY_EDITOR
     void OnValidate()
     {
-        Start();
+        //Start();
     }
 #endif
 }

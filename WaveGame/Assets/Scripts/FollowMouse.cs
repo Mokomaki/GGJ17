@@ -8,7 +8,10 @@ public class FollowMouse : MonoBehaviour
 
 	void Update ()
     {
-        MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(MousePos.x, MousePos.y, 0);
+        if (Input.GetButton("MouseControl"))
+        {
+            MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(transform.position.x, MousePos.y, transform.position.z);
+        }
     }
 }

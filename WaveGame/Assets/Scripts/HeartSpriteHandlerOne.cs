@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HeartSpriteHandlerOne : MonoBehaviour
 {
-    public Heart Heart;
     private SpriteRenderer spriteR;
     public Sprite Full_Heart;
     public Sprite Half_Heart;
@@ -42,7 +41,7 @@ public class HeartSpriteHandlerOne : MonoBehaviour
         }
         if (spriteMode == 2)
         {
-            Heart.Heart_Count++;
+            Heart.Instance.Heart_Count++;
         }
     }
 }

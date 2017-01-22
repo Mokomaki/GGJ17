@@ -6,6 +6,7 @@ public class SpeakerScale : MonoBehaviour
 {
     Vector3 StartScale;
     float scale;
+    public float speed = 0.5f;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class SpeakerScale : MonoBehaviour
 
     void Update()
     {
-        scale = 1 + Mathf.PingPong(1 * Time.time, .5f/*speed*/) * 0.5f/*scale pingpong*/;
+        scale = 1 + Mathf.PingPong(1 * Time.time, speed/*speed*/) * 0.5f/*scale pingpong*/;
         transform.localScale = StartScale*scale;
     }
 }
