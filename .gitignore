@@ -29,3 +29,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 WaveGame/Library/ShaderCache/f/ffd1d5a27655f0e39ddf225cada28231.bin
+build/
+WaveGame.zip
