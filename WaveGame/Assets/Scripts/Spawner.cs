@@ -10,8 +10,9 @@ public class Spawner : MonoBehaviour
     {
         public GameObject prefab;
         public float time;
-        public float spawnrate;
+        public float spawnrate = 5;
         public Transform SpawnPos;
+        public bool InUse = false;
     }
 
     public List<Spawnable> Spawnables = new List<Spawnable>();
@@ -20,7 +21,7 @@ public class Spawner : MonoBehaviour
     {
         foreach(var s in Spawnables)
         {
-            if (Time.time > s.time)
+            if (s.InUse && Time.time > s.time && s.spawnrate > 0.1f)
             {
                 s.time += s.spawnrate;
                 Instantiate(s.prefab,s.SpawnPos.transform.position,s.SpawnPos.transform.rotation);
