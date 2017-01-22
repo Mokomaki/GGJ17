@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RhythmLength: 10.4
-  overWriteFirstRhythm: 1
+  overWriteFirstRhythm: 0
   Spawnables:
   - prefab: {fileID: 1731907737443636, guid: 3bfb4bee8a46025429a9304252b4f0b7, type: 2}
     time: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
     InUse: 1
   - prefab: {fileID: 1731907737443636, guid: 3bfb4bee8a46025429a9304252b4f0b7, type: 2}
     time: 0
-    FirstRhythm: 2
+    FirstRhythm: 1
     Strike: 0.375
     RepeatMultiplier: 4
     InUse: 1
