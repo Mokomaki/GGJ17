@@ -18,14 +18,13 @@ public class Spawner : MonoBehaviour
         public bool InUse = false;
     }
 
-    public Transform SpawnPos;
-
     public float RhythmLength = 4;
 
     public bool overWriteFirstRhythm = false;
 
     public List<Spawnable> Spawnables = new List<Spawnable>();
 
+    public Transform SpawnPos;
 
     void Start()
     {

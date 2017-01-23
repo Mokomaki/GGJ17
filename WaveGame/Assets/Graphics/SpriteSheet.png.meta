@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0528bd7d1a772314e8ac112d9ab73a4e
-timeCreated: 1485172815
+timeCreated: 1485022131
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,7 +10,6 @@ TextureImporter:
     21300006: SpriteSheet_3
     21300008: SpriteSheet_4
     21300010: SpriteSheet_5
-    21300012: SpriteSheet_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -175,19 +174,6 @@ TextureImporter:
         height: 918
       alignment: 7
       pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: SpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 122
-        width: 263
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

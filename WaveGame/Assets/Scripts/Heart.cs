@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    public GameObject DisableME;
-    public GameObject GameOver;
-
     public static Heart Instance;
 
     public HeartSpriteHandlerOne Heart_1;
@@ -48,18 +45,7 @@ public class Heart : MonoBehaviour
         }
         else
         {
-            gameObject.transform.position = new Vector3(10000,1000,1000);
-            DisableME.gameObject.transform.position = new Vector3(10000, 1000, 1000);
-            GameOver.SetActive(isActiveAndEnabled);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene(0);
-            }
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                SceneManager.LoadScene(1);
-            }
+            SceneManager.LoadScene(0);
         }
     }
 }
