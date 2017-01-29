@@ -22,12 +22,17 @@ public class ShortLineHandler : MonoBehaviour
 
     public List<Func> functions = new List<Func>();
 
+    // public float Points = 0;
+
+
     [Range(0.1f,10)]
     public float length = 1;
     int LinePoints = 50;
     public Vector3[] positions;
     
     public float Speed = 1.0f;
+
+
 
     public float Accuracy = 0.5f;
 
@@ -145,9 +150,11 @@ public class ShortLineHandler : MonoBehaviour
         }
     }
 
+
     public void Die()
     {
         Destroy(gameObject);
+        Score.ScoreInstance.AddToScore();
     }
 
     public void Reach()
