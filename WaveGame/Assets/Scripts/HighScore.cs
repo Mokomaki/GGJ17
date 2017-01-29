@@ -31,7 +31,7 @@ public class SHighScore : MonoBehaviour
 
     void Update()
     {
-        text.text = "HighScore " + highscore;
+        text.text = "HighScore: " + highscore;
 
         if (score > highscore)
         {

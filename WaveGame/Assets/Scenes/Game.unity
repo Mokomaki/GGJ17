@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPos: {fileID: 1099333278}
   RhythmLength: 10.4
-  overWriteFirstRhythm: 1
+  overWriteFirstRhythm: 0
   Spawnables:
   - prefab: {fileID: 1731907737443636, guid: 3bfb4bee8a46025429a9304252b4f0b7, type: 2}
     time: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
     InUse: 1
   - prefab: {fileID: 1731907737443636, guid: 3bfb4bee8a46025429a9304252b4f0b7, type: 2}
     time: 0
-    FirstRhythm: 2
+    FirstRhythm: 1
     Strike: 0.375
     RepeatMultiplier: 4
     InUse: 1
@@ -411,19 +411,13 @@ MonoBehaviour:
     InUse: 1
   - prefab: {fileID: 1838040159621134, guid: faab53334883f2d408e2b669297c5617, type: 2}
     time: 0
-    FirstRhythm: 8
+    FirstRhythm: 4
     Strike: 2.5
     RepeatMultiplier: 1
     InUse: 1
   - prefab: {fileID: 1893118352000124, guid: 50af87d3814ae5c45a6ba4f9627cb0a6, type: 2}
     time: 0
-    FirstRhythm: 16
-    Strike: 1
-    RepeatMultiplier: 1
-    InUse: 1
-  - prefab: {fileID: 1838040159621134, guid: faab53334883f2d408e2b669297c5617, type: 2}
-    time: 0
-    FirstRhythm: 0
+    FirstRhythm: 6
     Strike: 0
     RepeatMultiplier: 1
     InUse: 1
@@ -432,7 +426,13 @@ MonoBehaviour:
     FirstRhythm: 0
     Strike: 0
     RepeatMultiplier: 1
-    InUse: 1
+    InUse: 0
+  - prefab: {fileID: 1838040159621134, guid: faab53334883f2d408e2b669297c5617, type: 2}
+    time: 0
+    FirstRhythm: 0
+    Strike: 0
+    RepeatMultiplier: 1
+    InUse: 0
 --- !u!1 &312830098
 GameObject:
   m_ObjectHideFlags: 0
