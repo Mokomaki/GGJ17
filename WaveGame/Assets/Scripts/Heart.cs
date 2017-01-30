@@ -48,18 +48,20 @@ public class Heart : MonoBehaviour
         }
         else
         {
-            gameObject.transform.position = new Vector3(10000,1000,1000);
-            DisableME.gameObject.transform.position = new Vector3(10000, 1000, 1000);
-            GameOver.SetActive(isActiveAndEnabled);
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                SceneManager.LoadScene(0);
-            }
+            Time.timeScale = 0;
+            GameOver.SetActive(true);
 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                SceneManager.LoadScene(1);
-            }
+            //gameObject.transform.position = new Vector3(10000,1000,1000);
+            //DisableME.gameObject.transform.position = new Vector3(10000, 1000, 1000);
+            //if (Input.GetKey(KeyCode.Escape))
+            //{
+            //    SceneManager.LoadScene(0);
+            //}
+
+            //if (Input.GetKey(KeyCode.Space))
+            //{
+            //    SceneManager.LoadScene(1);
+            //}
         }
     }
 }

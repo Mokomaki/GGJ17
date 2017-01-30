@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    public static GameOver GoInctance;
+    //public static GameOver GoInctance;
 
-    void Awake()
+    void Update()
     {
-        if (GoInctance != this)
-            GoInctance = this;
+        //if (GoInctance != this)
+        //    GoInctance = this;
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -30,7 +30,7 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
-        if (GoInctance != this)
-            GoInctance = this;
+        //if (GoInctance != this)
+        //    GoInctance = this;
     }
 }
