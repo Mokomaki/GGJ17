@@ -8,29 +8,39 @@ public class GameOver : MonoBehaviour
 {
     //public static GameOver GoInctance;
 
-    void Update()
-    {
+    //void Update()
+    //{
         //if (GoInctance != this)
         //    GoInctance = this;
 
         //Time.timeScale = 0;
 
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-            Time.timeScale = 1;
-        }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene(1);
-            Time.timeScale = 1;
-        }
-    }
+           //SceneManager.LoadScene(0);
+            //Time.timeScale = 1;
 
-    void Start()
-    {
-        //if (GoInctance != this)
-        //    GoInctance = this;
-    }
+
+            //SceneManager.LoadScene(1);
+          //  Time.timeScale = 1;
+
+    //}
+
+//void Start()
+//{
+//if (GoInctance != this)
+//    GoInctance = this;
+//}
+
+public void Exit()
+{
+    SceneManager.LoadScene(0);
+    Time.timeScale = 1;
+}
+
+public void Restart()
+{
+    SceneManager.LoadScene(1);
+    Time.timeScale = 1;
+}
+
 }
