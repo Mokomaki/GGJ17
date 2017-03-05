@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void Quit()
@@ -15,8 +15,4 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
-    public void menu()
-    {
-        SceneManager.LoadScene(0);
-    }
 }
