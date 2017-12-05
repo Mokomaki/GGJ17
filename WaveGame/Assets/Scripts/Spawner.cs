@@ -50,8 +50,6 @@ public class Spawner : MonoBehaviour
                 go.transform.localPosition = s.prefab.transform.localPosition;
                 go.transform.localRotation = s.prefab.transform.localRotation;
 
-
-                //Instantiate(s.prefab,SpawnPos.transform.position,SpawnPos.transform.rotation,transform);
             }
         }
     }

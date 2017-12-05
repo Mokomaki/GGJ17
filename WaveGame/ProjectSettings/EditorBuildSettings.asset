@@ -7,7 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-  - enabled: 1
+    guid: 2fbbf9c0217b1aa4ea06886f999ed4d1
+  - enabled: 0
     path: Assets/Scenes/Infinite1.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 81fa4fca2d5beb3498f5089617133cfc
   - enabled: 1
-    path: Assets/Scenes/MapSelection.unity
+    path: Assets/Scenes/InfiniteOne.unity
+    guid: c4b8949c8a1994e4987addfc1b768deb

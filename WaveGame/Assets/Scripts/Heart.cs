@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    public GameObject DisableME;
+    public GameObject Game;
+    public GameObject Exit;
     public GameObject GameOver;
 
     public static Heart Instance;
@@ -49,8 +50,8 @@ public class Heart : MonoBehaviour
         else
         {
             Time.timeScale = 0;
+            Exit.SetActive(false);
             GameOver.SetActive(true);
-
             //gameObject.transform.position = new Vector3(10000,1000,1000);
             //DisableME.gameObject.transform.position = new Vector3(10000, 1000, 1000);
             //if (Input.GetKey(KeyCode.Escape))

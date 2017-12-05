@@ -3,36 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class GameOver : MonoBehaviour
 {
-    //public static GameOver GoInctance;
-
-    //void Update()
-    //{
-        //if (GoInctance != this)
-        //    GoInctance = this;
-
-        //Time.timeScale = 0;
-
-
-           //SceneManager.LoadScene(0);
-            //Time.timeScale = 1;
-
-
-            //SceneManager.LoadScene(1);
-          //  Time.timeScale = 1;
-
-    //}
-
-//void Start()
-//{
-//if (GoInctance != this)
-//    GoInctance = this;
-//}
 
 public void Exit()
 {
+        Advertisement.Show();
     SceneManager.LoadScene(0);
     Time.timeScale = 1;
 }

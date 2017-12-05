@@ -43,10 +43,12 @@ public class ShortLineHandler : MonoBehaviour
 
     LineRenderer lr;
     int i = 0;
-    int j = 0;
+    //int j = 0;
 
     int index;
     float error;
+
+    bool isAlive = true;
     
     [ContextMenu("Render Line")]
     void Start()
@@ -72,14 +74,22 @@ public class ShortLineHandler : MonoBehaviour
 
         Curve();
 
-        lr.numPositions = LinePoints;
+        lr.positionCount = LinePoints;
         lr.SetPositions(positions);
     }
     
     void Update()
     {
-        transform.localPosition = transform.localPosition + Vector3.left * Speed * Time.deltaTime;
-        CheckWave();
+        if (isAlive)
+        {
+            transform.localPosition = transform.localPosition + Vector3.left * Speed * Time.deltaTime;
+            CheckWave();
+        }
+        else
+        {
+            transform.localPosition = transform.localPosition + Vector3.up * (Speed * 10) * Time.deltaTime;
+            //transform.localScale += new Vector3(0, -0.1f);
+        }
     }
 
     void CheckWave()
@@ -111,35 +121,39 @@ public class ShortLineHandler : MonoBehaviour
 
     float Y(int ipos)
     {
-        float retVal = 0;
-        float pos = ipos * lh.Ratio;
-        foreach(var f in functions)
+        if (isAlive)
         {
-            if (!f.InUse)
-                continue;
-
-            if (f.StartPoint < pos && pos < f.EndPoint)
+            float retVal = 0;
+            float pos = ipos * lh.Ratio;
+            foreach (var f in functions)
             {
-                switch (f.UseFunction)
+                if (!f.InUse)
+                    continue;
+
+                if (f.StartPoint < pos && pos < f.EndPoint)
                 {
-                    case 1: // linear with input as center
-                        retVal += pos < f.StartPoint + f.FunctionInput ?
-                            Mathf.Lerp(0, f.FunctionSize, (pos - f.StartPoint) / f.FunctionInput) :
-                            Mathf.Lerp(0, f.FunctionSize, (f.EndPoint - pos) / (f.EndPoint - f.StartPoint - f.FunctionInput));
-                        break;
-                    case 2: // sin with input as x multiplier
-                        retVal += Mathf.Sin((pos-f.StartPoint) * f.FunctionInput) * f.FunctionSize;
-                        break;
-                    case 3: // half sin with input as x multiplier
-                        retVal += Mathf.Clamp(Mathf.Sin((pos - f.StartPoint) * f.FunctionInput), 0, float.MaxValue) * f.FunctionSize;
-                        break;
-                    default:
-                        break;
+                    switch (f.UseFunction)
+                    {
+                        case 1: // linear with input as center
+                            retVal += pos < f.StartPoint + f.FunctionInput ?
+                                Mathf.Lerp(0, f.FunctionSize, (pos - f.StartPoint) / f.FunctionInput) :
+                                Mathf.Lerp(0, f.FunctionSize, (f.EndPoint - pos) / (f.EndPoint - f.StartPoint - f.FunctionInput));
+                            break;
+                        case 2: // sin with input as x multiplier
+                            retVal += Mathf.Sin((pos - f.StartPoint) * f.FunctionInput) * f.FunctionSize;
+                            break;
+                        case 3: // half sin with input as x multiplier
+                            retVal += Mathf.Clamp(Mathf.Sin((pos - f.StartPoint) * f.FunctionInput), 0, float.MaxValue) * f.FunctionSize;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
-        }
 
-        return Mathf.Clamp(retVal,0,10);
+            return Mathf.Clamp(retVal, 0, 10);
+        }
+        return 0;
     }
 
     void Curve()
@@ -153,13 +167,25 @@ public class ShortLineHandler : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        DieAnimation();
         Score.ScoreInstance.AddToScore();
     }
 
     public void Reach()
     {
         Heart.Instance.TakesDmG();
+        DieAnimation();
+    }
+
+    public void DieAnimation()
+    {
+        isAlive = false;
+        StartCoroutine(Wait(2));
+    }
+
+    IEnumerator Wait (float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
         Destroy(gameObject);
     }
 

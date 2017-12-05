@@ -20,11 +20,12 @@ public class Pointer : MonoBehaviour
     {
         CurPos = TargetPos = -1.9f;
         Camera.main.aspect = 16 / 10;
-        Debug.Log(Camera.main.pixelRect);
+     //   Debug.Log(Camera.main.pixelRect);
     }
 
     void Update()
-    {
+	{
+		/*
         if (Input.GetKey(KeyCode.Space))
         {
             TargetPos += Sensitivity;
@@ -34,15 +35,16 @@ public class Pointer : MonoBehaviour
             TargetPos -= Sensitivity;
         }
         TargetPos = Mathf.Clamp(TargetPos, MinPos, MaxPos);
-        //transform.position = new Vector3(transform.position.x, TargetPos, transform.position.z);
-
-        
-        if (MouseControlEnabled && Input.GetButton("MouseControl"))
-        {
-            MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            TargetPos = MousePos.y;
-        }
     }
+    */
+		if (Input.touchCount > 0 || Input.GetKey(KeyCode.Space)) 
+		{
+			TargetPos += Sensitivity;
+		} else {
+			TargetPos -= Sensitivity;
+		}
+		TargetPos = Mathf.Clamp (TargetPos, MinPos, MaxPos);
+	}
 
     void LateUpdate()
     {

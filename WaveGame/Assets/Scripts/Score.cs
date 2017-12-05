@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
     public static Score ScoreInstance;
-    public Text Points;
+    public TextMeshProUGUI Points;
     public float ScorePoints;
 
     void Awake()
@@ -19,8 +20,6 @@ public class Score : MonoBehaviour
     {
         if (ScoreInstance != this)
             ScoreInstance = this;
-
-        Points = GetComponent<Text>();
     }
     void Update()
     {

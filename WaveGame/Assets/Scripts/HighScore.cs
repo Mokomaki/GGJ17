@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SHighScore : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class SHighScore : MonoBehaviour
 
     public float highscore;
 
-    public Text text;
+    public TextMeshProUGUI text;
 
     void Awake()
     {
@@ -24,7 +25,6 @@ public class SHighScore : MonoBehaviour
         if (SHInstance != this)
             SHInstance = this;
 
-        text = GetComponent<Text>();
 
         highscore = PlayerPrefs.GetFloat("highscore", highscore);
     }

@@ -65,7 +65,7 @@ public class LineHandler : MonoBehaviour
             positions[i] = new Vector3(i * Ratio, 0);
         }
 
-        lr.numPositions = LinePoints;
+        lr.positionCount = LinePoints;
         lr.SetPositions(positions);
     }
 
@@ -79,7 +79,7 @@ public class LineHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         while (Time.time - tim > Frequency && Frequency > 0.0001f)
         {
