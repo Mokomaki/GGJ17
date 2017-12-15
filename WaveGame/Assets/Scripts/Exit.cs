@@ -9,7 +9,7 @@ public class Exit : MonoBehaviour
 	public GameObject Pause;
 	public void TryToExit ()
 	{
-        Advertisement.Show();
+        //Advertisement.Show();
 		Time.timeScale = 0;
 		Pause.SetActive (true);
 	}

@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
+
+    public AudioSource audio;
     public GameObject Game;
     public GameObject Exit;
     public GameObject GameOver;
 
     public static Heart Instance;
 
-    public HeartSpriteHandlerOne Heart_1;
-    public HeartSpriteHandlerOne Heart_2;
-    public HeartSpriteHandlerOne Heart_3;
+    public HeartSpriteHandler Heart_1;
+    public HeartSpriteHandler Heart_2;
+    public HeartSpriteHandler Heart_3;
     public int Heart_Count = 1;
+
+    public GameObject[] ObjsToDisable; 
     
     void Awake()
     {
@@ -51,18 +55,12 @@ public class Heart : MonoBehaviour
         {
             Time.timeScale = 0;
             Exit.SetActive(false);
+            foreach(GameObject obj in ObjsToDisable)
+            {
+                obj.gameObject.SetActive(false);
+            }
+            for(AudioSource AudioVolume; audio.volume > 0; audio.volume--)
             GameOver.SetActive(true);
-            //gameObject.transform.position = new Vector3(10000,1000,1000);
-            //DisableME.gameObject.transform.position = new Vector3(10000, 1000, 1000);
-            //if (Input.GetKey(KeyCode.Escape))
-            //{
-            //    SceneManager.LoadScene(0);
-            //}
-
-            //if (Input.GetKey(KeyCode.Space))
-            //{
-            //    SceneManager.LoadScene(1);
-            //}
         }
     }
 }

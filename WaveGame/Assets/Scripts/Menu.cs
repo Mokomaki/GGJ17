@@ -15,4 +15,14 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
