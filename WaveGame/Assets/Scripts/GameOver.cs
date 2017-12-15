@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
 
 public void Exit()
 {
-        //Advertisement.Show();
+        Advertisement.Show();
     SceneManager.LoadScene(0);
     Time.timeScale = 1;
 }

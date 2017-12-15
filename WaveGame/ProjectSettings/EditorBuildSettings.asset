@@ -17,6 +17,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InfiniteOne.unity
     guid: c4b8949c8a1994e4987addfc1b768deb
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: b576db214c7737f4e82f977b9c2aa8ab
